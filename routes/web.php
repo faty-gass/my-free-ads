@@ -46,3 +46,6 @@ Route::get('/users','UserController@getUsers');
 Route::get('/update_user/{id}','UserController@editUsers');
 Route::post('/update_user', 'UserController@updateUsers')->name('update_user');
 Route::get('/delete_user/{id}','UserController@deleteUsers');
+
+Route::get('/user_space/{id}','AdsController@showUserSpace');
+Route::get('/user_space','AdsController@showUserSpace');

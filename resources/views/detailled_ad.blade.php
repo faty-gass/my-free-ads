@@ -11,7 +11,8 @@
             <p>État : {{$ads->state}} </p>
             <p>Prix : {{$ads->price}} </p>
             <p>Description : {{$ads->description}}</p>
-            <p>Lieu : {{$ads->location}} {{$ads->image}}</p>
+            <p>Lieu : {{$ads->location}}</p>
+            <p>Propriétaire : {{$users::where('id',$ads->user_id)->first()->login}} </p>
             <p><img src="{{$ads->image}}" alt="{{$ads->title}}" /></p>
 
         </div>

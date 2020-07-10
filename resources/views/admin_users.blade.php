@@ -12,6 +12,7 @@
                         <th>Surnom</th>
                         <th>Email</th>
                         <th>Téléphone</th>
+                        <th>Statut</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -23,6 +24,7 @@
                         <td>{{$user->nickname}} </td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->phone}}</td>
+                        <td>@if ($user->is_admin) Admin @else Non Admin @endif</td>
                         <td><a href="/update_user/{{$user->id}}">Modifier</a></td>
                         <td><a href="/delete_user/{{$user->id}}">Supprimer</a></td>
                     </tr>

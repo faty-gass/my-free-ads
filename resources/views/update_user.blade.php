@@ -56,13 +56,14 @@
             @enderror
         </div>
     </div>
-
+    @if ( $user::where('id',Auth::id())->first()->is_admin == 1 )
     <div class="form-group row">
-        <label for="is_admin" class="col-md-4 col-form-label text-md-right">{{ __('Statut') }}</label>
+        <label for="is_admin" class="col-md-4 col-form-label text-md-right">{{ __('Admin') }}</label>
         <div class="col-md-6">
-            <input id="is_admin" type="checkbox" class="form-control" name="is_admin">
+            <input id="is_admin" type="checkbox" class="form-control" name="is_admin" @if ($users->is_admin)==1 { echo checked } @endif >
         </div>
     </div>
+    @endif
 
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">
