@@ -4,10 +4,10 @@
 @section('content')
 <div class="container">
     <div class=" justify-content-center">
-        <aside>
+    
         <form method="post" action="{{route('search_result')}}" class="container" >
-        @csrf 
-            <label for="search_bar"> Recherche</label></br>
+            
+            <label for="search_bar"> Recherche</label>
             <input type="search" name="search" placeholder="Rechercher une annonce" />
         
             <p>Filtres annonces</p>
@@ -32,10 +32,8 @@
             </div>
             <input type="submit" value="Valider"/>
         </form>
-    </aside>
 
         <h3> Annonces </h3>
-
     @foreach ($ads as $ad)
         <div class="col-md-10">
             <p>Titre : {{$ad->title}} </p>

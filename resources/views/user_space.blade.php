@@ -38,6 +38,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <a href="/add_ads" class="btn btn-secondary">Créer une annonce</a>  
         </div>
     </div>
 </div>

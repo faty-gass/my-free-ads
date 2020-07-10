@@ -6,13 +6,17 @@
             @csrf 
             <input type="hidden" name="id" value="{{$ads->id}}"/>
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-2">
+                    <label for='category'>Catégorie</label></br>
+                    <select id='category' name='category'>
+                        <option value="auto" >Automobile</option>
+                        <option value="multimedia">Multimédia</option>
+                        <option value="furniture">Meuble</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-7">
                     <label for='title'>Titre de l'annonce</label>
                     <input type='text' name='title' value='{{$ads->title}}' class='form-control'/>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for='category'>Catégorie</label>
-                    <input type='text' name='category' value='{{$ads->category}}'class='form-control'/>
                 </div>
                 <div class="form-group col-md-3">
                     <label for='location'>Lieu</label>
@@ -29,8 +33,12 @@
                     <input type='number' name='price' value='{{$ads->price}}' class='form-control'/>
                 </div>
                 <div class="form-group col-md-3 mr-4">
-                    <label for='state'>État</label>
-                    <input type='text' name='state' value='{{$ads->state}}' class='form-control'/>
+                    <label for='state'>État</label></br>
+                    <select id='state' name='state'>
+                        <option value="new" >Neuf</option>
+                        <option value="good">Reconditionné</option>
+                        <option value="used">Occasion</option>
+                    </select>
                 </div>
 
                 <div class="form-group col-md-4">

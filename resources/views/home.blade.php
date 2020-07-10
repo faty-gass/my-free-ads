@@ -14,9 +14,13 @@
                         </div>
 
                     @endif
-                    @if (Auth::id())
+                    @if (Auth::id()) 
                     <p> Vous êtes connecté !!</p>
+                        @if (Auth::user()->is_admin == 0)
                     <a href="/user_space/{{Auth::id()}}" class="btn btn-secondary">Accéder à mon espace</a>
+                        @else
+                    <a href="/users" class="btn btn-secondary">Accéder à l'espace administrateur</a>
+                        @endif  
                     @endif
                     <a href="/accueil" class="btn btn-secondary">Accéder aux annonces</a>
                 </div>

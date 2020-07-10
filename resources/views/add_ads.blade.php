@@ -6,13 +6,18 @@
             <form method="POST" action="{{route('new_ad')}}" enctype="multipart/form-data">
             @csrf 
             <div class="form-row">
-                <div class="form-group col-md-6">
+
+                <div class="form-group col-md-2">
+                    <label for='category'>Catégorie</label></br>
+                    <select id='category' name='category'>
+                    <option value="auto" >Automobile</option>
+                    <option value="multimedia">Multimédia</option>
+                    <option value="furniture">Meuble</option>
+                </select>
+                </div>
+                <div class="form-group col-md-7">
                     <label for='title'>Titre de l'annonce</label>
                     <input type='text' name='title' class='form-control'/>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for='category'>Catégorie</label>
-                    <input type='text' name='category' class='form-control'/>
                 </div>
                 <div class="form-group col-md-3">
                     <label for='location'>Lieu</label>

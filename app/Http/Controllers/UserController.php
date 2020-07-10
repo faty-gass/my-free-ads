@@ -19,6 +19,10 @@ class UserController extends Controller
     }
 
     public function updateUsers(Request $request){
+        $request->validate([
+            'login' => 'required|max:255|unique:users,login,'.\Auth::id(),
+            'email' => 'required|email|unique:users,email,'.\Auth::id(),
+        ]);
         $users = User::where('id',$request->id)->first();
         $users->login = $request->login;
         $users->nickname = $request->nickname;
@@ -29,7 +33,7 @@ class UserController extends Controller
         } else {
         $users->is_admin = 0;
         }
-        $users->save();
+        $users->update();
         return "l'utilisateur a été mis à jour";
     }
 

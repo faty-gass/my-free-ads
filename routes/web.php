@@ -34,18 +34,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/accueil','AdsController@showAll');
-Route::get('/add_ads', 'AdsController@addAds');
+Route::post('/accueil', 'AdsController@search')->name('search_result');
+Route::get('/add_ads', 'AdsController@addAds')->middleware('auth');
 Route::post('/add_ads', 'AdsController@createAds')->name('new_ad');
-Route::get('/ads','AdsController@getAds');
+Route::get('/ads','AdsController@getAds')->middleware('auth');
 Route::get('/info_ad/{id}','AdsController@adDetails');
-Route::get('/update_ad/{id}','AdsController@editAds');
+Route::get('/update_ad/{id}','AdsController@editAds')->middleware('auth');
 Route::post('/update_ad', 'AdsController@updateAds')->name('update_ad');
-Route::get('/delete_ad/{id}','AdsController@deleteAds');
+Route::get('/delete_ad/{id}','AdsController@deleteAds')->middleware('auth');
 
-Route::get('/users','UserController@getUsers');
-Route::get('/update_user/{id}','UserController@editUsers');
+Route::get('/users','UserController@getUsers')->middleware('auth','admin');
+Route::get('/update_user/{id}','UserController@editUsers')->middleware('auth');
 Route::post('/update_user', 'UserController@updateUsers')->name('update_user');
-Route::get('/delete_user/{id}','UserController@deleteUsers');
+Route::get('/delete_user/{id}','UserController@deleteUsers')->middleware('auth');
 
-Route::get('/user_space/{id}','AdsController@showUserSpace');
-Route::get('/user_space','AdsController@showUserSpace');
+Route::get('/user_space/{id}','AdsController@showUserSpace')->middleware('auth');
+Route::get('/user_space','AdsController@showUserSpace')->middleware('auth');
