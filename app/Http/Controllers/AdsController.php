@@ -21,7 +21,8 @@ class AdsController extends Controller
         $file = $request->file('image');
         if($file->isValid()){
 			if($file->store('public')) {
-				$path=$file->store('public');
+                $path=$file->store('public');
+                $file_name=substr($path,7);
 			}
 		} else { return "erreur de fichier";}
         $ads->title = $request->title;
@@ -30,10 +31,11 @@ class AdsController extends Controller
         $ads->price = $request->price;
         $ads->state = $request->state;
         $ads->location = $request->location;
-        $ads->image = $path;
+        $ads->image = $file_name;
         $ads->user_id = \Auth::id();
         $ads->save();
-        return "L'annonce a bien été ajoutée !";
+        $conf_message= "L'annonce a bien été ajoutée !";
+        return view('confirmation',['conf_message'=>$conf_message]);
     }
 
     public function getAds(){
@@ -44,7 +46,8 @@ class AdsController extends Controller
 
     public function showAll(){
         $ads= Ads::all();
-        return view('welcome',['ads'=>$ads]);
+        $users=User::all();
+        return view('welcome',['ads'=>$ads,'users'=>$users]);
     }
     public function showUserSpace($user_id){
         $ads = Ads::where('user_id',$user_id)->get();
@@ -68,7 +71,8 @@ class AdsController extends Controller
         $file = $request->file('image');
         if($file->isValid()){
 			if($file->store('public')) {
-				$path=$file->store('public');
+                $path=$file->store('public');
+                $file_name=substr($path,7);
 			}
 		} else { return "erreur de fichier";}
         $ads->title = $request->title;
@@ -77,27 +81,30 @@ class AdsController extends Controller
         $ads->price = $request->price;
         $ads->state = $request->state;
         $ads->location = $request->location;
-        $ads->image = $path;
+        $ads->image = $file_name;
         $ads->save();
-        return "l'annonce a été modifiée";
+        $conf_message= "L'annonce a été modifiée";
+        return view('confirmation',['conf_message'=>$conf_message]);
     }
 
     public function deleteAds($id){
         Ads::where('id',$id)->delete();
-        return "L'annonce a été supprimée!";
+        $conf_message= "L'annonce a été supprimée!";
+        return view('confirmation',['conf_message'=>$conf_message]);
     }
 
     public function search(Request $request){
+        $users=User::all();
         $entry= "%".$request->search."%";
         switch (true) {
-            case $request->category=="auto" :
-                $catg=array("auto"); break;
+            case $request->category=="automobile" :
+                $catg=array("automobile"); break;
             case $request->category=="multimedia";
                 $catg=array("multimedia"); break;
-            case $request->category=="furniture";
-                $catg=array("furniture"); break;
+            case $request->category=="meuble";
+                $catg=array("meuble"); break;
             default :
-                $catg=array("auto","multimedia","furniture");
+                $catg=array("automobile","multimedia","meuble");
         }
         switch (true){
             case $request->state=="new" :
@@ -127,7 +134,7 @@ class AdsController extends Controller
             ->whereBetween('price',$range)
             ->get();
         
-        return view('welcome',['ads'=>$ads,'entry'=>$entry, 'request'=>$request->price_range]);
+        return view('welcome',['ads'=>$ads,'entry'=>$entry, 'users'=>$users]);
     }
 
 

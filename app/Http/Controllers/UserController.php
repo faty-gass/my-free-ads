@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Ads;
 
 class UserController extends Controller
 {
     public function getUsers(){
         $users = User::all();
-        return view('admin_users',['users'=>$users]);
+        $ads = Ads::all() ;
+        return view('admin',['users'=>$users, 'ads'=>$ads]);
     }
 
     public function editUsers($id){
@@ -34,11 +36,13 @@ class UserController extends Controller
         $users->is_admin = 0;
         }
         $users->update();
-        return "l'utilisateur a été mis à jour";
+        $conf_message="L'utilisateur a bien été mis à jour !";
+        return view('confirmation',['conf_message'=>$conf_message]);
     }
 
     public function deleteUsers($id){
-        Ads::where('id',$id)->delete();
-        return "L'utilisateur a été supprimée!";
+        User::where('id',$id)->delete();
+        $conf_message="L'utilisateur a bien été supprimé !";
+        return view('confirmation',['conf_message'=>$conf_message]);
     }
 }

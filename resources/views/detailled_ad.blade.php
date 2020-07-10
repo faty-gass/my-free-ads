@@ -3,19 +3,22 @@
 @section('title') Détail annonce @endsection
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <h3> Détail de l'annonce </h3>
+    <div class="card d-flex flex-row justify-content-start align-items-center mb-4">
+        <div class="col-md-4">
+            <img src={{asset('storage/'.$ads->image)}} class="card-img" alt={{$ads->title}}>
+        </div>
+        <div class="col-md-8 text-break">
+            <h3 class="mb-4"> Détail de l'annonce </h3>
             <p>Titre : {{$ads->title}} </p>
             <p>Catégorie : {{$ads->category}} </p>
-            <p>État : {{$ads->state}} </p>
-            <p>Prix : {{$ads->price}} </p>
-            <p>Description : {{$ads->description}}</p>
+            <p>État : @if ($ads->state=="new") Neuf @elseif ($ads->state=="good") Reconditionné @else Occasion @endif</p>
+            <p>Prix : {{$ads->price}}€</p>
+            <p class="text-break">Description : {{$ads->description}}</p>
             <p>Lieu : {{$ads->location}}</p>
             <p>Propriétaire : {{$users::where('id',$ads->user_id)->first()->login}} </p>
-            <p><img src="{{$ads->image}}" alt="{{$ads->title}}" /></p>
 
         </div>
     </div>
+    <a href="{{ url('/accueil') }}" class="btn btn-dark text-right">Retour aux annonces</a>
 </div>
 @endsection

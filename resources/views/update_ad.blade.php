@@ -9,9 +9,9 @@
                 <div class="form-group col-md-2">
                     <label for='category'>Catégorie</label></br>
                     <select id='category' name='category'>
-                        <option value="auto" >Automobile</option>
+                        <option value="automobile" >Automobile</option>
                         <option value="multimedia">Multimédia</option>
-                        <option value="furniture">Meuble</option>
+                        <option value="meuble">Meuble</option>
                     </select>
                 </div>
                 <div class="form-group col-md-7">
@@ -51,7 +51,7 @@
                 <input type='text' name='user_id' value='{{$ads->user_id}}' class='form-control'/>
             </div>-->
             
-            <input type="submit" value="Valider" class="btn btn-secondary"/>
+            <input type="submit" value="Valider" class="btn btn-primary"/>
             
             
             </form>

@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app sticky-footer-wrapper">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/accueil') }}">
@@ -81,9 +81,16 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 ">
             @yield('content')
+
         </main>
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+            <div class="container text-center">
+            <small>Copyright &copy; Fatymata Gassama</small>
+            </div>
+        </footer>
     </div>
+
 </body>
 </html>

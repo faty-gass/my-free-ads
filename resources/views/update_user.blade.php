@@ -2,9 +2,10 @@
 
 @section('content')
 
-<h3> Modification utilisateurs </h3>
+<div class="container col-md-10">
+<h3 class="text-center mb-4"> Modification utilisateurs </h3>
 
-<div class="panel-body">
+<div class="">
 
 <form method="POST" action="{{route('update_user')}}">
     @csrf
@@ -73,5 +74,5 @@
         </div>
     </div>
 </form>
-
+</div>
 @endsection
