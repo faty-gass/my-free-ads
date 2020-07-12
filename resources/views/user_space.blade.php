@@ -9,7 +9,7 @@
                 <p>Mon Surnom : {{$users->nickname}}</p>
                 <p>Mon Email : {{$users->email}}</p>
                 <p>Mon Téléphone : {{$users->phone}}</p>
-                <a href="/update_user/{{$users->id}}" class="btn btn-secondary">Mettre à jour</a>
+                <a href="/update_user/{{$users->id}}" class="btn btn-primary">Mettre à jour</a>
 
             <h3 class="mt-4"> Mes annonces </h3>
                 <table class="table table-striped">
@@ -38,7 +38,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <a href="/add_ads" class="btn btn-secondary">Créer une annonce</a>  
+                <a href="/add_ads" class="btn btn-primary">Créer une annonce</a>  
         </div>
     </div>
 </div>

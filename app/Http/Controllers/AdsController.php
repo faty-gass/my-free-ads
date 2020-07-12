@@ -74,7 +74,10 @@ class AdsController extends Controller
                 $path=$file->store('public');
                 $file_name=substr($path,7);
 			}
-		} else { return "erreur de fichier";}
+		} else { 
+            $error_message= "Fichier invalide!";
+            return view('error',['error_message'=>$error_message]);
+        }
         $ads->title = $request->title;
         $ads->category = $request->category;
         $ads->description = $request->description;

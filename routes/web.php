@@ -37,7 +37,7 @@ Route::get('/accueil','AdsController@showAll');
 Route::post('/accueil', 'AdsController@search')->name('search_result');
 Route::get('/add_ads', 'AdsController@addAds')->middleware('auth');
 Route::post('/add_ads', 'AdsController@createAds')->name('new_ad');
-Route::get('/ads','AdsController@getAds')->middleware('auth','admin');
+//Route::get('/ads','AdsController@getAds')->middleware('auth','admin');
 Route::get('/info_ad/{id}','AdsController@adDetails');
 Route::get('/update_ad/{id}','AdsController@editAds')->middleware('auth');
 Route::post('/update_ad', 'AdsController@updateAds')->name('update_ad');

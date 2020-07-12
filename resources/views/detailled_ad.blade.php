@@ -8,7 +8,7 @@
             <img src={{asset('storage/'.$ads->image)}} class="card-img" alt={{$ads->title}}>
         </div>
         <div class="col-md-8 text-break">
-            <h3 class="mb-4"> Détail de l'annonce </h3>
+            <h3 class="mb-4 mt-4"> Détail de l'annonce </h3>
             <p>Titre : {{$ads->title}} </p>
             <p>Catégorie : {{$ads->category}} </p>
             <p>État : @if ($ads->state=="new") Neuf @elseif ($ads->state=="good") Reconditionné @else Occasion @endif</p>

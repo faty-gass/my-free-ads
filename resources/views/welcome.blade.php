@@ -37,25 +37,25 @@
             <h3> Annonces </h3>
 
             @foreach ($ads as $ad)
-            <div class="card mb-3" >
-                <div class="row no-gutters">
+            <div class="card mb-3 " >
+                <div class="row no-gutters d-flex align-items-center">
                     <div class="col-md-4">
-                    <img src={{asset('storage/'.$ad->image)}} class="card-img" alt="...">
+                        <img src={{asset('storage/'.$ad->image)}} class="card-img" alt="...">
                     </div>
                     <div class="col-md-8">
-                    <div class="card-body d-flex flex-column justify-content-between" style="min-width:200px">
-                        <div class="d-flex justify-content-between">
-                            <h4 class="card-title">{{$ad->title}}</h4>
-                            <p>Catégorie : {{$ad->category}} </p>
+                        <div class="card-body d-flex flex-column justify-content-between" style="min-width:200px">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-title">{{$ad->title}}</h4>
+                                <p>Catégorie : {{$ad->category}} </p>
+                            </div>
+                            <p class="card-text">{{$ad->description}}</p>
+                            <div class="d-flex justify-content-between">
+                                <p>@if ($ad->state=="new") Neuf @elseif ($ad->state=="good") Reconditionné @else Occasion @endif </p>
+                                <p>Prix : {{$ad->price}}€</p>
+                            </div>
+                            <p><small class="text-muted">Vendu par {{$users->where('id',$ad->user_id)->first()->login }} à {{$ad->location}}</small></p>
+                            <a href="/info_ad/{{$ad->id}}" class="stretched-link"></a>
                         </div>
-                        <p class="card-text">{{$ad->description}}</p>
-                        <div class="d-flex justify-content-between">
-                            <p>@if ($ad->state=="new") Neuf @elseif ($ad->state=="good") Reconditionné @else Occasion @endif </p>
-                            <p>Prix : {{$ad->price}}€</p>
-                        </div>
-                        <p><small class="text-muted">Vendu par {{$users->where('id',$ad->user_id)->first()->login }} à {{$ad->location}}</small></p>
-                        <a href="/info_ad/{{$ad->id}}" class="stretched-link"></a>
-                    </div>
                     </div>
                 </div>
             </div>

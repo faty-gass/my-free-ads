@@ -9,7 +9,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th class="align-middle text-center">Login</th>
-                        <th class="align-middle text-center">Surnom</th>
+                        <th class="align-middle text-center">Pseudo</th>
                         <th class="align-middle text-center">Email</th>
                         <th class="align-middle text-center">Téléphone</th>
                         <th class="align-middle text-center">Statut</th>
